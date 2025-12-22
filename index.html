@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aatalon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="ambient-glow"></div>
+
+
+<header class="nav">
+    <div class="nav-right">
+        <a href="resume.html">Resume</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</header>
+
+
+<section class="welcome">
+    <h1 class="hero-name letter-hover">
+    <span>A</span><span>a</span><span>t</span><span>a</span><span>l</span><span>o</span><span>n</span>
+</h1>
+
+    <p class="subtitle">Programmer & Software Designer</p>
+
+    <div class="socials">
+        <a href="https://github.com/aatalon" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/aatalonshan/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@Axyanz" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+</section>
+
+
+<section class="projects">
+
+    <div class="project-card" data-project="badge">
+        <img src="images/BadgePlus/BadgePlus.png">
+        <h2>Badge+</h2>
+    </div>
+
+    <div class="project-card" data-project="sprinter">
+        <img src="images/SuperSprinter/SuperSprinter.png">
+        <h2>Super Sprinter</h2>
+    </div>
+
+    <div class="project-card" data-project="ocean">
+        <img src="images/OceanCleaning/OceanCleaning.png">
+        <h2>Ocean Cleaning Simulator</h2>
+    </div>
+
+    <div class="project-card" data-project="schoolday">
+        <img src="images/SchoolDay/SchoolDay.png">
+        <h2>School Day Calculator</h2>
+    </div>
+
+</section>
+
+
+<section class="impact" id="impact">
+    <h2 style="margin-bottom:40px;">Project Impact</h2>
+
+    <div class="impact-grid">
+        <div class="impact-card">
+            <h3>Badge+</h3>
+            <p class="impact-number" data-target="850">0</p>
+            <span>Downloads</span>
+        </div>
+
+        <div class="impact-card">
+            <h3>Super Sprinter</h3>
+            <p class="impact-number" data-target="250">0</p>
+            <span>Visits</span>
+        </div>
+
+        <div class="impact-card">
+            <h3>Ocean Cleaning Simulator</h3>
+            <p class="impact-number" data-target="15">0</p>
+            <span>Visits</span>
+        </div>
+    </div>
+
+    <p style="margin-top:30px;color:var(--muted);text-align:center;">
+        Last updated: <span id="lastUpdated"></span>
+    </p>
+</section>
+
+
+<section class="github-activity">
+    <h2 style="margin-bottom:24px;">Recent GitHub Activity</h2>
+
+    <ul id="commitList">
+        <li style="color:var(--muted);">Loading commits…</li>
+    </ul>
+
+    <p style="margin-top:20px;">
+        <a href="https://github.com/aatalon" target="_blank">
+            View on GitHub <i class="fa-solid fa-up-right-from-square"></i>
+        </a>
+    </p>
+</section>
+
+
+<div class="modal hidden">
+    <div class="modal-content">
+
+        <button class="modal-close">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <h2 id="modal-title"></h2>
+        <p id="modal-description"></p>
+
+        <div class="carousel-wrapper">
+            <button class="carousel-btn left">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="carousel">
+                <img id="carousel-image">
+            </div>
+
+            <button class="carousel-btn right">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <div class="modal-buttons" id="modal-links"></div>
+    </div>
+</div>
+
+
+<footer>
+    <p>© Aatalon Shanmugathasan</p>
+
+    <div class="socials footer-socials">
+        <a href="https://github.com/aatalon" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/aatalonshan/" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@Axyanz" target="_blank"><i class="fab fa-youtube"></i></a>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
