@@ -139,6 +139,12 @@ if (currentProject.video) {
     });
 });
 
+document.querySelectorAll(".project-actions a").forEach(link => {
+    link.addEventListener("click", e => {
+        e.stopPropagation();
+    });
+});
+
 
 leftBtn.onclick = () => {
     if (currentProject.video) {
