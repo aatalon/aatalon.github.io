@@ -101,27 +101,20 @@ document.querySelectorAll(".project-card").forEach(card => {
         // VIDEO vs IMAGE logic
 if (currentProject.video) {
     image.style.display = "none";
+
+    video.parentElement.style.display = "block"; // show wrapper
     video.style.display = "block";
 
-    video.src = `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&rel=0&controls=0`;
-
-
+    video.src = `https://www.youtube.com/embed/${currentProject.video}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1`;
 } else {
     video.src = "";
     video.style.display = "none";
+    video.parentElement.style.display = "none";
+
     image.style.display = "block";
     image.src = `images/${currentProject.folder}/${currentImages[0]}`;
 }
 
-
-        links.innerHTML = "";
-        currentProject.links.forEach(link => {
-            links.innerHTML += `
-                <a href="${link.url}" target="_blank">
-                    ${link.name} <i class="fa-solid fa-up-right-from-square"></i>
-                </a>
-            `;
-        });
 
         document.body.classList.add("modal-open");
         modal.classList.remove("hidden");
@@ -140,11 +133,14 @@ rightBtn.onclick = () => {
 };
 
 function closeModal() {
-    video.src = ""; // kills playback
+    video.src = "";
+    video.style.display = "none";
+    video.parentElement.style.display = "none";
 
     modal.classList.add("hidden");
     document.body.classList.remove("modal-open");
 }
+
 
 
 
