@@ -104,7 +104,7 @@ function updateImage() {
 
 
 
-document.querySelectorAll(".project-card").forEach(card => {
+document.querySelectorAll(".project-row").forEach(card => {
     card.addEventListener("click", () => {
         currentProject = data[card.dataset.project];
         currentImages = currentProject.images;
