@@ -29,6 +29,15 @@ let currentIndex = 0;
 let currentProject;
 
 const data = {
+
+    retroadventure: {
+        title: "Retro Adventure",
+        description: "Retro Adventure is a side-scrolling retro-inspired 2D platformer based on the foundational mechanics from Super Mario Bros.",
+        folder: "RetroAdventure",
+        images: ["Title.png"],
+        links: [{ name: "Github", url: "https://github.com/aatalon/Retro-Adventure" }]
+    },
+
     badge: {
         title: "Badge+",
         description: "A Roblox Studio plugin that makes badge creation and management simple and fast. Created to fix developer repetition.",
