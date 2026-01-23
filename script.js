@@ -75,8 +75,22 @@ const data = {
 };
 
 function updateImage() {
-    video.src = ""; // stop YouTube playback
+
+    // VIDEO SLIDE
+    if (currentIndex === -1 && currentProject.video) {
+        image.style.display = "none";
+
+        video.parentElement.style.display = "block";
+        video.style.display = "block";
+
+        video.src = `https://www.youtube.com/embed/${currentProject.video}?autoplay=1&controls=1&modestbranding=1&rel=0&playsinline=1`;
+        return;
+    }
+
+    // IMAGE SLIDES
+    video.src = "";
     video.style.display = "none";
+    video.parentElement.style.display = "none";
 
     image.style.display = "block";
     image.style.opacity = 0;
@@ -86,6 +100,7 @@ function updateImage() {
         image.style.opacity = 1;
     }, 200);
 }
+
 
 
 
@@ -100,13 +115,16 @@ document.querySelectorAll(".project-card").forEach(card => {
 
         // VIDEO vs IMAGE logic
 if (currentProject.video) {
+    currentIndex = -1
     image.style.display = "none";
 
     video.parentElement.style.display = "block"; // show wrapper
     video.style.display = "block";
 
-    video.src = `https://www.youtube.com/embed/${currentProject.video}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1`;
+    video.src = `https://www.youtube.com/embed/${currentProject.video}?autoplay=1&controls=1&modestbranding=1&rel=0&playsinline=1`;
 } else {
+    currentIndex = 0
+
     video.src = "";
     video.style.display = "none";
     video.parentElement.style.display = "none";
@@ -123,14 +141,25 @@ if (currentProject.video) {
 
 
 leftBtn.onclick = () => {
-    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    if (currentProject.video) {
+        currentIndex--;
+        if (currentIndex < -1) currentIndex = currentImages.length - 1;
+    } else {
+        currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    }
     updateImage();
 };
 
 rightBtn.onclick = () => {
-    currentIndex = (currentIndex + 1) % currentImages.length;
+    if (currentProject.video) {
+        currentIndex++;
+        if (currentIndex >= currentImages.length) currentIndex = -1;
+    } else {
+        currentIndex = (currentIndex + 1) % currentImages.length;
+    }
     updateImage();
 };
+
 
 function closeModal() {
     video.src = "";
