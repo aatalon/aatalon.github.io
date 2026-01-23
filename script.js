@@ -103,7 +103,8 @@ if (currentProject.video) {
     image.style.display = "none";
     video.style.display = "block";
 
-    video.src = `https://www.youtube.com/embed/${currentProject.video}?autoplay=1&mute=1&rel=0`;
+    video.src = `https://www.youtube.com/embed/${id}?autoplay=1&mute=1&rel=0&controls=0`;
+
 
 } else {
     video.src = "";
