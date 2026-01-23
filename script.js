@@ -19,6 +19,8 @@ const title = document.getElementById("modal-title");
 const desc = document.getElementById("modal-description");
 const links = document.getElementById("modal-links");
 const image = document.getElementById("carousel-image");
+const video = document.getElementById("carousel-video");
+
 
 const closeBtn = document.querySelector(".modal-close");
 const leftBtn = document.querySelector(".carousel-btn.left");
@@ -34,7 +36,8 @@ const data = {
         title: "Retro Adventure",
         description: "Retro Adventure is a side-scrolling retro-inspired 2D platformer based on the foundational mechanics from Super Mario Bros.",
         folder: "RetroAdventure",
-        images: ["Title.png"],
+        images: ["RetroAdventureLogo.png"],
+        video: "RetroAdventureTrailer.mp4",
         links: [{ name: "Github", url: "https://github.com/aatalon/Retro-Adventure" }]
     },
 
@@ -72,12 +75,18 @@ const data = {
 };
 
 function updateImage() {
+    video.pause();
+    video.style.display = "none";
+
+    image.style.display = "block";
     image.style.opacity = 0;
+
     setTimeout(() => {
         image.src = `images/${currentProject.folder}/${currentImages[currentIndex]}`;
         image.style.opacity = 1;
     }, 200);
 }
+
 
 document.querySelectorAll(".project-card").forEach(card => {
     card.addEventListener("click", () => {
@@ -87,7 +96,20 @@ document.querySelectorAll(".project-card").forEach(card => {
 
         title.textContent = currentProject.title;
         desc.textContent = currentProject.description;
-        image.src = `images/${currentProject.folder}/${currentImages[0]}`;
+
+        // VIDEO vs IMAGE logic
+        if (currentProject.video) {
+            image.style.display = "none";
+            video.style.display = "block";
+            video.src = `images/${currentProject.folder}/${currentProject.video}`;
+            video.currentTime = 0;
+            video.play();
+        } else {
+            video.pause();
+            video.style.display = "none";
+            image.style.display = "block";
+            image.src = `images/${currentProject.folder}/${currentImages[0]}`;
+        }
 
         links.innerHTML = "";
         currentProject.links.forEach(link => {
@@ -103,6 +125,7 @@ document.querySelectorAll(".project-card").forEach(card => {
     });
 });
 
+
 leftBtn.onclick = () => {
     currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
     updateImage();
@@ -114,9 +137,13 @@ rightBtn.onclick = () => {
 };
 
 function closeModal() {
+    video.pause();
+    video.currentTime = 0;
+
     modal.classList.add("hidden");
     document.body.classList.remove("modal-open");
 }
+
 
 closeBtn.onclick = closeModal;
 modal.onclick = e => {
