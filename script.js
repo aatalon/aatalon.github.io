@@ -36,7 +36,7 @@ const data = {
         title: "Retro Adventure",
         description: "Retro Adventure is a side-scrolling retro-inspired 2D platformer based on the foundational mechanics from Super Mario Bros.",
         folder: "RetroAdventure",
-        images: ["RetroAdventureLogo.png"],
+        images: ["RetroAdventureLogo.png", "RetroAdventure2.png", "RetroAdventure3.png"],
         video: "-w75LLfwbbc",
         links: [{ name: "Github", url: "https://github.com/aatalon/Retro-Adventure" }]
     },
