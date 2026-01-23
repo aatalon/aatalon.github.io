@@ -162,27 +162,3 @@ if (lastUpdated) {
         });
 }
 
-
-const commitList = document.getElementById("commitList");
-
-if (commitList) {
-    fetch("https://api.github.com/users/aatalon/events/public")
-        .then(res => res.json())
-        .then(events => {
-            commitList.innerHTML = "";
-
-            events
-                .filter(e => e.type === "PushEvent")
-                .slice(0, 4)
-                .forEach(event => {
-                    const li = document.createElement("li");
-                    li.textContent =
-                        `${event.repo.name}: ${event.payload.commits[0].message}`;
-                    commitList.appendChild(li);
-                });
-        })
-        .catch(() => {
-            commitList.innerHTML =
-                "<li style='color:var(--muted);'>Unable to load commits</li>";
-        });
-}
