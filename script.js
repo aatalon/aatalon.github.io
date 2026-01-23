@@ -37,7 +37,7 @@ const data = {
         description: "Retro Adventure is a side-scrolling retro-inspired 2D platformer based on the foundational mechanics from Super Mario Bros.",
         folder: "RetroAdventure",
         images: ["RetroAdventureLogo.png"],
-        video: "RetroAdventureTrailer.mp4",
+        video: "-w75LLfwbbc",
         links: [{ name: "Github", url: "https://github.com/aatalon/Retro-Adventure" }]
     },
 
@@ -75,7 +75,7 @@ const data = {
 };
 
 function updateImage() {
-    video.pause();
+    video.src = ""; // stop YouTube playback
     video.style.display = "none";
 
     image.style.display = "block";
@@ -88,6 +88,7 @@ function updateImage() {
 }
 
 
+
 document.querySelectorAll(".project-card").forEach(card => {
     card.addEventListener("click", () => {
         currentProject = data[card.dataset.project];
@@ -98,18 +99,19 @@ document.querySelectorAll(".project-card").forEach(card => {
         desc.textContent = currentProject.description;
 
         // VIDEO vs IMAGE logic
-        if (currentProject.video) {
-            image.style.display = "none";
-            video.style.display = "block";
-            video.src = `images/${currentProject.folder}/${currentProject.video}`;
-            video.currentTime = 0;
-            video.play();
-        } else {
-            video.pause();
-            video.style.display = "none";
-            image.style.display = "block";
-            image.src = `images/${currentProject.folder}/${currentImages[0]}`;
-        }
+if (currentProject.video) {
+    image.style.display = "none";
+    video.style.display = "block";
+
+    video.src = `https://www.youtube.com/embed/${currentProject.video}?autoplay=1&mute=1&rel=0`;
+
+} else {
+    video.src = "";
+    video.style.display = "none";
+    image.style.display = "block";
+    image.src = `images/${currentProject.folder}/${currentImages[0]}`;
+}
+
 
         links.innerHTML = "";
         currentProject.links.forEach(link => {
@@ -137,12 +139,12 @@ rightBtn.onclick = () => {
 };
 
 function closeModal() {
-    video.pause();
-    video.currentTime = 0;
+    video.src = ""; // kills playback
 
     modal.classList.add("hidden");
     document.body.classList.remove("modal-open");
 }
+
 
 
 closeBtn.onclick = closeModal;
