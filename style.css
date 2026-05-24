@@ -442,4 +442,32 @@ footer {
   .stats {
     grid-template-columns: 1fr;
   }
+  #click-container{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:9999;
+}
+
+.click-effect{
+    position:absolute;
+    width:15px;
+    height:15px;
+    border-radius:50%;
+    background:#b98b61;
+    transform:translate(-50%,-50%);
+    animation:expand .7s ease-out forwards;
+}
+
+@keyframes expand{
+    0%{
+        opacity:0.8;
+        transform:translate(-50%,-50%) scale(.2);
+    }
+
+    100%{
+        opacity:0;
+        transform:translate(-50%,-50%) scale(6);
+    }
+}
 }
